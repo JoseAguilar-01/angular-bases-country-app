@@ -1,0 +1,28 @@
+<h2>Por Región</h2>
+<hr />
+
+<div class="row w-100 mx-auto mb-4">
+  <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
+    <button
+      *ngFor="let region of regions"
+      (click)="onSearch(region)"
+      [ngClass]="[
+        'btn',
+        selectedRegion === region ? 'btn-primary' : 'btn-outline-primary'
+      ]"
+    >
+      {{ region }}
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <countries-country-table
+      alertMessage="Aún no se ha seleccionado alguna región"
+      [countries]="countries"
+    ></countries-country-table>
+  </div>
+</div>
+
+<shared-loader *ngIf="enableLoader" [isLoading]="isLoading"></shared-loader>

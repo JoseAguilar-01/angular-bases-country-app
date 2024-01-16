@@ -1,0 +1,62 @@
+<ng-template #loader>
+  <div class="alert alert-info text-center">Espere Por Favor</div>
+</ng-template>
+
+<div *ngIf="country; else loader">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="fw-bold display-6">
+        {{ country.name.common }}
+      </h2>
+      <hr />
+
+      <div class="d-flex justify-content-between align-items-center gap-3">
+        <figure
+          class="d-flex justify-content-center align-items-center flex-column w-50 gap-1"
+        >
+          <img
+            [src]="country.flags.svg"
+            [alt]="country.flags.alt"
+            width="200"
+          />
+          <figcaption class="text-secondary text-center text-sm">
+            Bandera de {{ country.name.common }}
+          </figcaption>
+        </figure>
+
+        <ul class="list-group w-50">
+          <li class="list-group-item">
+            <span class="fw-bold">Nombre:</span>
+            {{ country.name.common }}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">Capital:</span>
+            {{ country.capital }}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">Región:</span>
+            {{ country.region }}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">Código:</span>
+            {{ country.cca3 }}
+          </li>
+          <li class="list-group-item">
+            <span class="fw-bold">Población:</span>
+            {{ country.population | number }}
+          </li>
+        </ul>
+      </div>
+
+      <h3>Traducciones</h3>
+
+      <div class="d-flex flex-wrap gap-2">
+        <span
+          *ngFor="let translationKey of translationsKeys"
+          class="badge bg-primary"
+          >{{ country.translations[translationKey].common }}</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

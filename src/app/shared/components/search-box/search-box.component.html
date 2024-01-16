@@ -1,0 +1,10 @@
+<input
+  name="search"
+  id="search"
+  class="form-control"
+  [placeholder]="placeholder"
+  (keyup.enter)="emitSearch(searchInput.value)"
+  (keyup)="emitDebounce(searchInput.value)"
+  [defaultValue]="defaultValue"
+  #searchInput
+/>
